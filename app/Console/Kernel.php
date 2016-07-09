@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Symfony\Component\Finder\Shell\Command;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,6 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Inspire::class,
+        Commands\CalculateFine::class,
+        Commands\CancelRequest::class,
     ];
 
     /**
@@ -26,5 +29,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
+
+        // to calculate fine and cancel request daily at 00:00
+        $schedule->command('calculate_fine')->dailyAt('00:00');
+        $schedule->command('cancel_request')->dailyAt('19:12');
     }
 }

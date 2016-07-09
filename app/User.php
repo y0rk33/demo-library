@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -15,7 +16,9 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+    use SoftDeletes;
 
+    protected $dates = ['date_of_birth'];
     /**
      * The database table used by the model.
      *
@@ -28,7 +31,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'date_of_birth', 'doc_id', 'is_admin'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -36,4 +39,17 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function is_admin() {
+        if($this->is_admin === 1) {
+            return  true;
+        }
+
+        return false;
+    }
+
+    public function transactions() {
+        return $this->hasMany('App\BorrowTransaction');
+
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -23,6 +24,9 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+
+    protected $redirectTo = '/';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -42,8 +46,9 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -57,9 +62,22 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'doc_id' => $data['doc_id'],
+            'date_of_birth' => $data['date_of_birth'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    protected function authenticated()
+    {
+        if(Auth::user()->is_admin === 1) {
+            return redirect('/pending_request');
+        }
+
+        return redirect('/');
+    }
+
 }

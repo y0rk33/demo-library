@@ -1,45 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layout.layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('content')
+    <div class="container text-center">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+        <div class="col-md-6 col-md-offset-3 main_search">
+            <h1 class="main_search_logo">Libary</h1>
+            {!! Form::open(['url' => 'book_search']) !!}
+                <div class="input-group">
+                    {!! Form::text('search_text', old('search_text'),
+                        ['class' => 'form-control', 'placeholder' => 'Search by isbn, title or author ...']) !!}
+                    <span class="input-group-btn">
+                        {!! Form::submit('Search', ['class' => 'btn btn-success']) !!}
+                    </span>
+                </div>
+            {!! Form::close() !!}
         </div>
-    </body>
-</html>
+
+    </div>
+@endsection

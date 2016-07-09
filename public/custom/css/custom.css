@@ -1,0 +1,63 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 45px;
+}
+
+.spacer {
+    height: 10px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    height: 45px;
+    background-color: #f5f5f5;
+}
+
+.footer-center {
+    padding: 0 5px;
+}
+
+.footer-center .text-muted {
+    font-size: 12px;
+    margin: 13px 0;
+}
+
+.main_search_logo {
+    font-size: 50px;
+}
+
+.main_search {
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.cover_frame {
+    border: 1px solid #d2d0d0;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    line-height: 390px;
+}
+
+.book-cover {
+    vertical-align: middle;
+    max-height: 400px;
+    max-width: 370px;
+    height: 100%;
+    width: auto;
+}
+
+.book_title {
+    margin-top: -5px;
+}

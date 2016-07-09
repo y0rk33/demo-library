@@ -6,7 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "twbs/bootstrap": "^3.3",
+        "datatables/datatables": "^1.10",
+        "laracasts/flash": "^2.0",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -40,7 +45,12 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "mkdir -p public/bootstrap",
+            "cp -R vendor/twbs/bootstrap/dist/ public/bootstrap/",
+            "mkdir -p public/datatables",
+            "cp -R vendor/datatables/datatables/media public/datatables/"
+
         ]
     },
     "config": {

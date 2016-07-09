@@ -19,3 +19,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+    return [
+        'isbn' => rand(10000000000, 9999999999999),
+        'title' => str_random(13),
+        'edition' => rand(1, 10) + 'edition',
+        'year' => \Carbon\Carbon::now(),
+        'author' => str_random(20),
+        'description' => str_random(255),
+        'current_qty' => rand(1, 200),
+        'total_qty' => rand(200, 600),
+        'shelf_location' => str_random(10),
+    ];
+});
