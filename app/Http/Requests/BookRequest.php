@@ -29,7 +29,7 @@ class BookRequest extends Request
             'title' => 'required',
             'year' => 'required',
             'author' => 'required',
-            'total_qty' => 'required|numeric',
+            'total_qty' => 'required|numeric|min:0',
             'shelf_location' => 'required',
         ];
     }
