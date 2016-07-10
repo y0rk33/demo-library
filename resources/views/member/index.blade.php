@@ -34,7 +34,7 @@
 		{!! Form::close() !!}
 		<div class="spacer"></div>
 
-		@if (count($users) > 0)
+		@if (!empty($users))
 			<table class="table table-responsive table-bordered" id="table-result">
 				<thead>
 					<th>Document Id</th>

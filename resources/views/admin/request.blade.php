@@ -29,7 +29,7 @@
 
 		<div class="spacer"></div>
 
-		@if (count($borrow_transactions) > 0)
+		@if (isset($borrow_transactions[0]))
 			<table class="table table-striped table-bordered table-responsive" id="table-result">
 				<thead>
 					<th>Request Number</th>
