@@ -64,7 +64,9 @@ class BooksController extends Controller
 	public function show_all() {
 		$books = Book::all();
 
-		return Datatables::collection($books)->make(true);
+		return Datatables::collection($books)
+					->editColumn('isbn', '<a href="{{ url(\'book/\'.$id) }}">{{ $isbn }}</a>')
+					->make(true);
 	}
 
     /**

@@ -20,8 +20,7 @@
 				<p><strong>Admin Information :</strong></p>
 				<ul>
 					<li>Search by isbn, title or author for a faster search result</li>
-					<li>'Show All' will display all the books that are available in the library, however it will take a longer time ti load</li>
-					<li>To create a report, click 'Show All', filter and export</li>
+					<li>Report is live data, what you see is what you will get when exporting</li>
 					<li>The bigger data set, the longer it will take to export</li>
 				</ul>
 			</div>
