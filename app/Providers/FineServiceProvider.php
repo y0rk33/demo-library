@@ -16,12 +16,21 @@ class FineServiceProvider extends ServiceProvider
     public function boot()
     {
         Fine::creating(function($fine) {
-            $fine->created_by = Auth::user()->id;
-            $fine->updated_by = Auth::user()->id;
+            if (empty(Auth::user())) {
+                $fine->created_by = '1';
+                $fine->updated_by = '1';
+            } else {
+                $fine->created_by = Auth::user()->id;
+                $fine->updated_by = Auth::user()->id;
+            }
         });
 
         Fine::updating(function($fine) {
-            $fine->updated_by = Auth::user()->id;
+            if (empty(Auth::user())) {
+                $fine->updated_by = '1';
+            } else {
+                $fine->updated_by = Auth::user()->id;
+            }
         });
 
         Fine::deleting(function($fine) {

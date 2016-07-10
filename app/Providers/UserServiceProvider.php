@@ -16,12 +16,21 @@ class UserServiceProvider extends ServiceProvider
     public function boot()
     {
         User::creating(function($user) {
-            $user->created_by = Auth::user()->id;
-            $user->updated_by = Auth::user()->id;
+            if (empty(Auth::user())) {
+                $user->created_by = '1';
+                $user->updated_by = '1';
+            } else {
+                $user->created_by = Auth::user()->id;
+                $user->updated_by = Auth::user()->id;
+            }
         });
 
         User::updating(function($user) {
-            $user->updated_by = Auth::user()->id;
+            if (empty(Auth::user())) {
+                $user->updated_by = '1';
+            } else {
+                $user->updated_by = Auth::user()->id;
+            }
         });
 
         User::deleting(function($user) {

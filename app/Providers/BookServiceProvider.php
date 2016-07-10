@@ -28,7 +28,11 @@ class BookServiceProvider extends ServiceProvider
         });
 
         Book::updating(function($book) {
-            $book->updated_by = Auth::user()->id;
+            if (empty(Auth::user())) {
+                $book->updated_by = '1';
+            } else {
+                $book->updated_by = Auth::user()->id;
+            }
         });
 
         Book::deleting(function($book) {

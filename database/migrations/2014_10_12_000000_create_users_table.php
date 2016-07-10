@@ -33,10 +33,22 @@ class CreateUsersTable extends Migration
         DB::table('users')->insert(
             [
                 'doc_id' => '000000000',
+                'email' => 'system@library.com',
+                'first_name' => 'system',
+                'last_name' => 'system',
+                'date_of_birth' => '0000-00-00',
+                'password' => \Illuminate\Support\Facades\Hash::make('y6u7i8Q1'),
+                'is_admin' => '1',
+            ]
+        );
+
+        DB::table('users')->insert(
+            [
+                'doc_id' => '000000000',
                 'email' => 'admin@library.com',
                 'first_name' => 'admin',
                 'last_name' => 'admin',
-                'date_of_birth' => '01/01/0001',
+                'date_of_birth' => '0000-00-00',
                 'password' => \Illuminate\Support\Facades\Hash::make('Password1'),
                 'is_admin' => '1',
             ]
