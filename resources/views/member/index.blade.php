@@ -12,8 +12,8 @@
 			<ul>
 				<li>When creating or 'Password Reset' a temp password will be displayed at the top of the page. Give this temp password to a new member</li>
 				<li>The temp password can be changed later on by the member from the 'Settings' page.</li>
-				<li>'Show All' will display all registered members</li>
 				<li>To create a report, click 'Show All', filter and export</li>
+				<li>All the available data will be exported</li>
 				<li>The bigger data set, the longer it will take to export</li>
 			</ul>
 		</div>
@@ -53,7 +53,6 @@
 							<td>{{ $user->date_of_birth->toDateString() }}</td>
 							<td>{{ $user->created_at->toDateString() }}</td>
 							<td>
-								@if(Auth::user()->id !== $user->id)
 								{!! Form::open(['url' => '/member_password_reset/'.$user->id]) !!}
 									<button type="submit" class="btn btn-sm btn-info">
 										<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Password Reset</button>
@@ -61,8 +60,6 @@
 										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
 									<a href="#" class="btn btn-sm btn-danger delete" id="{{ $user->id }}">
 										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
-								{!! Form::close() !!}
-								@endif
 							</td>
 						</tr>
 					@endforeach

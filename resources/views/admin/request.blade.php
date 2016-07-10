@@ -9,7 +9,7 @@
 			<ul>
 				{{--<li>'Show All' will display all pending requests, however it will take a longer time to load</li>--}}
 				<li>If the search returned too many results, you may use search box at the top left corner of the table to narrow down a search result</li>
-				<li>To create a report, click 'Show All', filter and export</li>
+				<li>All the available data will be exported</li>
 				<li>The bigger data set, the longer it will take to export</li>
 			</ul>
 		</div>

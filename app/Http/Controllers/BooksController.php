@@ -10,8 +10,10 @@ use App\Http\Requests;
 use App\Book;
 use App\Http\Requests\BookRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
+use Yajra\Datatables\Facades\Datatables;
 
 class BooksController extends Controller
 {
@@ -60,11 +62,9 @@ class BooksController extends Controller
 	}
 
 	public function show_all() {
-		$search_text = '';
 		$books = Book::all();
 
-		Log::info('User '.Auth::user()->doc_id.' went to /book -> show_all');
-		return view ('book.index', compact('books', 'search_text'));
+		return Datatables::collection($books)->make(true);
 	}
 
     /**

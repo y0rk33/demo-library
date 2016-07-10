@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/book', 'BooksController');
 
     Route::post('/book_search', 'BooksController@search');
-    Route::get('/book_show_all', 'BooksController@show_all');
+    Route::post('/book_show_all', 'BooksController@show_all');
     Route::post('/cover_update/{id}', 'BooksController@cover_update');
 
 });

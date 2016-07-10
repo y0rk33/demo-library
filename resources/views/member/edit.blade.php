@@ -65,6 +65,7 @@
 					@endif
 				</div>
 
+				@if(Auth::user()->id !== $user->id)
 				<div class="form-group {{ $errors->has('is_admin') ? 'has-error' : '' }}">
 					{!! Form::checkbox('is_admin', '1', $user->is_admin === 1 ? true : false, ['id' => 'is_admin']) !!}
 					{!! Form::label('is_admin', 'Is Admin') !!}
@@ -75,6 +76,7 @@
 						</span>
 					@endif
 				</div>
+				@endif
 
 				<div class="btn-group btn-group-justified" role="group" aria-label="...">
 					<div class="btn-group" role="group">

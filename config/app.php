@@ -156,6 +156,7 @@ return [
         App\Providers\BorrowTransactionServiceProvider::class,
         App\Providers\FineServiceProvider::class,
         App\Providers\UserServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
