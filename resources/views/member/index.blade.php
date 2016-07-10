@@ -10,7 +10,7 @@
 		<div class="alert alert-warning" role="alert">
 			<p><strong>Information :</strong></p>
 			<ul>
-				<li>When creating or  'Password Reset' a temp password will be displayed at the top of the page. Give this temp password to a new member</li>
+				<li>When creating or 'Password Reset' a temp password will be displayed at the top of the page. Give this temp password to a new member</li>
 				<li>The temp password can be changed later on by the member from the 'Settings' page.</li>
 				<li>'Show All' will display all registered members</li>
 				<li>To create a report, click 'Show All', filter and export</li>
@@ -32,7 +32,6 @@
 				</span>
 			</div>
 		{!! Form::close() !!}
-
 		<div class="spacer"></div>
 
 		@if (count($users) > 0)
@@ -64,7 +63,7 @@
 										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
 								{!! Form::close() !!}
 								@endif
-							</td>ngo
+							</td>
 						</tr>
 					@endforeach
 				</tbody>
