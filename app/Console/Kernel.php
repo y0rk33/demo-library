@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
                  ->hourly();
 
         // to calculate fine and cancel request daily at 00:00
-        $schedule->command('calculate_fine')->dailyAt('17:45');
+        $schedule->command('calculate_fine')->dailyAt('18:30');
         $schedule->command('cancel_request')->dailyAt('00:00');
     }
 }
