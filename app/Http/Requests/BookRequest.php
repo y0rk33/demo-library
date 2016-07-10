@@ -24,14 +24,14 @@ class BookRequest extends Request
     public function rules()
     {
         return [
-            //isbn can be with or without dashese
+            //isbn can be with or without dashes
             'isbn' => 'required|regex:/^[0-9 .\-]+$/i|unique:books,isbn,'.$this->book.',id,deleted_at,NULL|min:10|max:17',
             'title' => 'required',
             'year' => 'required',
             'author' => 'required',
             'total_qty' => 'required|numeric|min:0',
             'shelf_location' => 'required',
-            'book_cover' => 'max:100|mimes:jpg,png,jpeg'
+            'book_cover' => 'max:500|mimes:jpg,png,jpeg'
         ];
     }
 }
