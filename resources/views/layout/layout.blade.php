@@ -55,6 +55,16 @@
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				}
 			});
+
+			// simple auto logout after 30 mins
+			var delay = 1800000;
+			var currentUrl = window.location.pathname;
+
+			setTimeout(function() {
+				if (currentUrl !== '/auth/login') {
+					window.location.href = '/auth/logout';
+				}
+			}, delay);
 		});
 	</script>
 	@yield('script')
