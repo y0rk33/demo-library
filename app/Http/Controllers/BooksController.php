@@ -11,6 +11,7 @@ use App\Book;
 use App\Http\Requests\BookRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
 use Yajra\Datatables\Facades\Datatables;
@@ -220,7 +221,7 @@ class BooksController extends Controller
 
     public function cover_update(Request $request, $id) {
 		$this->validate($request, [
-			'book_cover' => 'max:100|mimes:jpg,png,jpeg'
+			'book_cover' => 'max:5000|mimes:jpg,png,jpeg'
 		]);
 
 		$book = Book::findOrFail($id);
@@ -229,6 +230,11 @@ class BooksController extends Controller
 			$book_cover = $request->file('book_cover');
 			$filename = $book->isbn.'.'.$book_cover->getClientOriginalExtension();
 			Image::make($book_cover)->save(public_path('/uploads/book_covers/' . $filename));
+
+			// delete previous file before uploading a new one
+			if($book->book_cover !== 'book_cover.jpg') {
+				File::delete(public_path('/uploads/book_covers/' . $book->book_cover));
+			};
 
 			$book->book_cover = $filename;
 			$book->save();
