@@ -220,7 +220,7 @@ class BooksController extends Controller
 
     public function cover_update(Request $request, $id) {
 		$this->validate($request, [
-			'book_cover' => 'max:500|mimes:jpg,png,jpeg'
+			'book_cover' => 'max:100|mimes:jpg,png,jpeg'
 		]);
 
 		$book = Book::findOrFail($id);
