@@ -17,6 +17,11 @@
 
 				@if(Auth::user()->is_admin())
 					{!! Form::open(['url' => 'cover_update/'.$book->id, 'enctype' => 'multipart/form-data', 'class' => 'form-inline']) !!}
+						@if ($errors->has('book_cover'))
+							<span class="help-block">
+								<strong class="text-danger">{{ $errors->first('book_cover') }}</strong>
+							</span>
+						@endif
 						<div class="form-group">
 							{!! Form::file('book_cover') !!}
 						</div>

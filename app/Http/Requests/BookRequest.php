@@ -31,6 +31,7 @@ class BookRequest extends Request
             'author' => 'required',
             'total_qty' => 'required|numeric|min:0',
             'shelf_location' => 'required',
+            'book_cover' => 'max:500|mimes:jpg,png,jpeg'
         ];
     }
 }
