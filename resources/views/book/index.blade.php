@@ -45,7 +45,7 @@
 		@endif
 
 		@if (count($books) > 0)
-			<div id="book-search-results table-responsive">
+			<div id="book-search-results" class="table-responsive">
 				<table class="table table-striped table-bordered" id="table-result">
 					<thead>
 						<tr>
