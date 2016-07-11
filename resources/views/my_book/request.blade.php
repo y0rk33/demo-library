@@ -24,33 +24,36 @@
 				<p>You have not requested any books</p>
 			</div>
 		@else
-			<table class="table table-striped table-bordered table-responsive">
-				<thead>
-				<th>Request Number</th>
-				<th>ISBN</th>
-				<th>Book Title</th>
-				<th>Shelf Location</th>
-				<th>Status</th>
-				<th>Action</th>
-				</thead>
-
-				<tbody>
-				@foreach($borrow_transactions as $transaction)
-					<tr>
-						<td>{{ $transaction->request_number }}</td>
-						<td><a href="{{ url('book/'.$transaction->book->id) }}">{{ $transaction->book->isbn }}</a></td>
-						<td>{{ $transaction->book->title }}, {{ $transaction->book->edition }}, {{ $transaction->book->year }}</td>
-						<td>
-							{{ $transaction->book->shelf_location }}
-						</td>
-						<td>{{ $transaction->status }}</td>
-						<td>
-							<a href="{{ url('book_request/cancel/'.$transaction->id) }}" class="btn btn-danger">Cancel</a>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Request Number</th>
+							<th>ISBN</th>
+							<th>Book Title</th>
+							<th>Shelf Location</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach($borrow_transactions as $transaction)
+						<tr>
+							<td>{{ $transaction->request_number }}</td>
+							<td><a href="{{ url('book/'.$transaction->book->id) }}">{{ $transaction->book->isbn }}</a></td>
+							<td>{{ $transaction->book->title }}, {{ $transaction->book->edition }}, {{ $transaction->book->year }}</td>
+							<td>
+								{{ $transaction->book->shelf_location }}
+							</td>
+							<td>{{ $transaction->status }}</td>
+							<td>
+								<a href="{{ url('book_request/cancel/'.$transaction->id) }}" class="btn btn-danger">Cancel</a>
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
 		@endif
 
 	</div>
