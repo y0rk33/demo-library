@@ -13,6 +13,13 @@
 				<li>The bigger data set, the longer it will take to export</li>
 			</ul>
 		</div>
+		
+		<div class="alert alert-info" role="alert">
+			<p><strong>Dev Note :</strong></p>
+			<ul>
+				<li>The job to calculate fines will run everyday at 00:00 (this is assuming the library is not working 24/7</li>
+			</ul>
+		</div>
 
 		{!! Form::open(['url' => '/book_return/search']) !!}
 			<div class="input-group">
@@ -30,43 +37,47 @@
 		<div class="spacer"></div>
 
 		@if (isset($borrow_transactions[0]))
-			<table class="table table-striped table-bordered table-responsive" id="table-result">
-				<thead>
-					<th>Request Number</th>
-					<th>Document Id / Name</th>
-					<th>ISBN</th>
-					<th>Book Title</th>
-					<th>Status</th>
-					<th>Date of Loan</th>
-					<th>Date to Return</th>
-					<th>Fine</th>
-					<th>Action</th>
-				</thead>
-
-				<tbody>
-				@foreach($borrow_transactions as $transaction)
-					<tr>
-						<td>{{ $transaction->request_number }}</td>
-						<td>{{ $transaction->user->doc_id }}, {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}</td>
-						<td><a href="{{ url('book/'.$transaction->book->id) }}">{{ $transaction->book->isbn }}</a></td>
-						<td>{{ $transaction->book->title }}</td>
-						<td>{{ $transaction->status }}</td>
-						<td>{{ $transaction->borrowed_at->toDateString() }}</td>
-						<td>{{ $transaction->to_be_returned_at->toDateString() }}</td>
-						<td>
-							@if(!empty($transaction->fine))
-								<span class="text-danger">${{ $transaction->fine->amount }}</span>
-							@else
-								<span class="text-success">No Fine</span>
-							@endif
-						</td>
-						<td>
-							<a href="{{ url('book_return/return/'.$transaction->id) }}" class="btn btn-success">Return</a>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered" id="table-result">
+					<thead>
+						<tr>
+							<th>Request Number</th>
+							<th>Document Id / Name</th>
+							<th>ISBN</th>
+							<th>Book Title</th>
+							<th>Status</th>
+							<th>Date of Loan</th>
+							<th>Date to Return</th>
+							<th>Fine</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+	
+					<tbody>
+					@foreach($borrow_transactions as $transaction)
+						<tr>
+							<td>{{ $transaction->request_number }}</td>
+							<td>{{ $transaction->user->doc_id }}, {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}</td>
+							<td><a href="{{ url('book/'.$transaction->book->id) }}">{{ $transaction->book->isbn }}</a></td>
+							<td>{{ $transaction->book->title }}</td>
+							<td>{{ $transaction->status }}</td>
+							<td>{{ $transaction->borrowed_at->toDateString() }}</td>
+							<td>{{ $transaction->to_be_returned_at->toDateString() }}</td>
+							<td>
+								@if(!empty($transaction->fine))
+									<span class="text-danger">${{ $transaction->fine->amount }}</span>
+								@else
+									<span class="text-success">No Fine</span>
+								@endif
+							</td>
+							<td>
+								<a href="{{ url('book_return/return/'.$transaction->id) }}" class="btn btn-success">Return</a>
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
 		@else
 			<div class="alert alert-warning" role="alert">
 				<p>There are no books on loan at the moment</p>
