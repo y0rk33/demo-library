@@ -35,36 +35,40 @@
 		<div class="spacer"></div>
 
 		@if (!empty($users))
-			<table class="table table-responsive table-bordered" id="table-result">
-				<thead>
-					<th>Document Id</th>
-					<th>Full Name</th>
-					<th>Email</th>
-					<th>Date Of Birth</th>
-					<th>Registered Date</th>
-					<th class="col-md-3">Action</th>
-				</thead>
-				<tbody>
-					@foreach($users as $user)
+			<div class="table-responsive">
+				<table class="table table-bordered" id="table-result">
+					<thead>
 						<tr>
-							<td>{{ $user->doc_id }}</td>
-							<td>{{ $user->first_name }}, {{ $user->last_name }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->date_of_birth->toDateString() }}</td>
-							<td>{{ $user->created_at->toDateString() }}</td>
-							<td>
-								{!! Form::open(['url' => '/member_password_reset/'.$user->id]) !!}
-									<button type="submit" class="btn btn-sm btn-info">
-										<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Password Reset</button>
-									<a href="{{ url('member/'.$user->id.'/edit') }}" class="btn btn-sm btn-warning">
-										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
-									<a href="#" class="btn btn-sm btn-danger delete" id="{{ $user->id }}">
-										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+							<th>Document Id</th>
+							<th>Full Name</th>
+							<th>Email</th>
+							<th>Date Of Birth</th>
+							<th>Registered Date</th>
+							<th class="col-md-3">Action</th>
+						</tr>	
+					</thead>
+					<tbody>
+						@foreach($users as $user)
+							<tr>
+								<td>{{ $user->doc_id }}</td>
+								<td>{{ $user->first_name }}, {{ $user->last_name }}</td>
+								<td>{{ $user->email }}</td>
+								<td>{{ $user->date_of_birth->toDateString() }}</td>
+								<td>{{ $user->created_at->toDateString() }}</td>
+								<td>
+									{!! Form::open(['url' => '/member_password_reset/'.$user->id]) !!}
+										<button type="submit" class="btn btn-sm btn-info">
+											<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Password Reset</button>
+										<a href="{{ url('member/'.$user->id.'/edit') }}" class="btn btn-sm btn-warning">
+											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+										<a href="#" class="btn btn-sm btn-danger delete" id="{{ $user->id }}">
+											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
+								</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		@endif
 
 	</div>
