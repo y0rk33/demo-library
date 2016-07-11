@@ -81,20 +81,23 @@
 			</div>
 		@endif
 
-		<table class="table table-striped table-bordered table-responsive" id="table-report">
-			<thead>
-				<tr>
-					<th>ISBN</th>
-					<th>Title</th>
-					<th>Edition</th>
-					<th>Year</th>
-					<th>Author</th>
-					<th>Available Qty</th>
-					<th>Shelf Location</th>
-					<th>Total Qty</th>
-				</tr>
-			</thead>
-		</table>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered" id="table-report">
+				<thead>
+					<tr>
+						<th>ISBN</th>
+						<th>Title</th>
+						<th>Edition</th>
+						<th>Year</th>
+						<th>Author</th>
+						<th>Available Qty</th>
+						<th>Shelf Location</th>
+						<th>Total Qty</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		
 
 	</div>
 @endsection
