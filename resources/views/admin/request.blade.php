@@ -30,36 +30,40 @@
 		<div class="spacer"></div>
 
 		@if (isset($borrow_transactions[0]))
-			<table class="table table-striped table-bordered table-responsive" id="table-result">
-				<thead>
-					<th>Request Number</th>
-					<th>Document Id / Name</th>
-					<th>ISBN</th>
-					<th>Book Title</th>
-					<th>Status</th>
-					<th class="col-md-2">Action</th>
-				</thead>
-
-				<tbody>
-				@foreach($borrow_transactions as $transaction)
-					<tr>
-						<td>{{ $transaction->request_number }}</td>
-						<td>
-							{{ $transaction->user->doc_id }}, {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}
-						</td>
-						<td>{{ $transaction->book->isbn }}</td>
-						<td>
-							{{ $transaction->book->title }}, {{ $transaction->book->edition }}, {{ $transaction->book->year }}
-						</td>
-						<td>{{ $transaction->status }}</td>
-						<td>
-							<a href="{{ url('pending_request/lend/'.$transaction->id) }}" class="btn btn-success">Lend</a>
-							<a href="{{ url('pending_request/cancel/'.$transaction->id) }}" class="btn btn-danger">Cancel</a>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered" id="table-result">
+					<thead>
+						<tr>
+							<th>Request Number</th>
+							<th>Document Id / Name</th>
+							<th>ISBN</th>
+							<th>Book Title</th>
+							<th>Status</th>
+							<th class="col-md-2">Action</th>
+						</tr>
+					</thead>
+	
+					<tbody>
+					@foreach($borrow_transactions as $transaction)
+						<tr>
+							<td>{{ $transaction->request_number }}</td>
+							<td>
+								{{ $transaction->user->doc_id }}, {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}
+							</td>
+							<td>{{ $transaction->book->isbn }}</td>
+							<td>
+								{{ $transaction->book->title }}, {{ $transaction->book->edition }}, {{ $transaction->book->year }}
+							</td>
+							<td>{{ $transaction->status }}</td>
+							<td>
+								<a href="{{ url('pending_request/lend/'.$transaction->id) }}" class="btn btn-success">Lend</a>
+								<a href="{{ url('pending_request/cancel/'.$transaction->id) }}" class="btn btn-danger">Cancel</a>
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
 		@else
 			<div class="alert alert-warning" role="alert">
 				<p>There are no pending requests at the moment</p>
